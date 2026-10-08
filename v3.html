@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teleport — The operating system for recruitment agencies</title>
+<meta name="description" content="Teleport keeps companies, candidates, jobs, pipeline and placements in one record for Hong Kong recruitment agencies. AI drafts; your consultant decides.">
+<meta property="og:title" content="Teleport — The operating system for recruitment agencies">
+<meta property="og:image" content="https://touchinnovation.github.io/teleport-website/assets/people/hero-tablet-1200.jpg">
+<meta property="og:description" content="One record from first CV to placed candidate. Built in Hong Kong, inside a working agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* CONFIG before going live: replace CONTACT_EMAIL (search the file). */
+:root{
+  --ink:#090909;           /* headline black (cover title) */
+  --char:#333333;          /* wordmark charcoal */
+  --ink-2:#4B4B4B;
+  --muted:#8A8A86;
+  --orange:#FF8200;        /* sampled from the Figma cover wordmark */
+  --orange-ink:#B85A00;    /* text-safe orange on white */
+  --orange-soft:#FFF1E3;
+  --paper:#FFFFFF;
+  --mist:#F7F7F5;          /* cover photo backdrop */
+  --panel:#EFEFED;
+  --line:#E4E4E0;
+  --r-lg:28px;
+  --r-md:16px;
+  --head:"Inter Tight","Noto Sans TC","PingFang HK",system-ui,sans-serif;
+  --body:"Inter","Noto Sans TC","PingFang HK",system-ui,sans-serif;
+  --max:1360px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--head);margin:0;font-weight:500;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+a:focus-visible,.pill:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:999px}
+
+/* ---------- Wordmark: E is three orange bars, no stem ---------- */
+.wm{display:inline-flex;align-items:center;font-family:var(--head);font-weight:600;color:var(--char);letter-spacing:.02em;line-height:1;white-space:nowrap}
+.wm .e{display:inline-flex;flex-direction:column;justify-content:space-between;width:.56em;height:.72em;margin:0 .07em}
+.wm .e i{display:block;height:.115em;border-radius:.06em;background:var(--orange)}
+.wm .e i:nth-child(1),.wm .e i:nth-child(3){width:100%}
+.wm .e i:nth-child(2){width:62%}
+.wm .e.r i:nth-child(2){margin-left:auto}
+.wm.light{color:#fff}
+
+/* ---------- Nav (Sana: logo · links · black pill) ---------- */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;height:64px;gap:48px}
+.nav .wm{font-size:22px}
+.nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav ul a:hover{color:var(--muted)}
+.nav .spacer{flex:1}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;font-size:15px;font-weight:500;transition:transform .15s,background .15s}
+.pill:hover{transform:translateY(-1px)}
+.pill.black{background:var(--ink);color:#fff}
+.pill.black:hover{background:#2a2a2a}
+.pill.orange{background:var(--orange);color:var(--ink)}
+.pill.orange:hover{background:#ff9629}
+.pill.white{background:#fff;color:var(--ink)}
+.pill.big{min-height:48px;padding:0 24px;font-size:16px}
+@media (max-width:860px){.nav ul{display:none}.nav{gap:16px}}
+
+/* ---------- Hero (Sana: giant centred headline + line) ---------- */
+.hero{text-align:center;padding:72px 32px 56px}
+.hero h1{font-size:clamp(42px,6.6vw,88px);line-height:.98;letter-spacing:-.035em;max-width:17ch;margin:0 auto}
+.hero h1 .o{white-space:nowrap}
+@media (max-width:560px){.hero h1 .o{white-space:normal}.hero{padding:48px 22px 40px}}
+.hero h1 .o{color:#D96A00}
+.hero p{margin:24px auto 0;max-width:46ch;font-size:19px;color:var(--ink-2)}
+.hero .ctas{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* proof strip — where Sana puts logos we put facts (no borrowed logos) */
+.proof{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;padding:28px 0 64px;color:var(--ink-2);font-size:15px}
+.proof b{font-family:var(--head);font-weight:600;color:var(--ink)}
+.proof span{display:flex;gap:6px;align-items:center;white-space:nowrap}
+@media (max-width:640px){.proof{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;font-size:14px;padding:8px 24px 40px}}
+.proof b{margin-right:0}
+.proof span::before{content:"";width:14px;height:4px;border-radius:2px;background:var(--orange)}
+
+/* ---------- Panels (Sana: big rounded grey cards) ---------- */
+.panel{border-radius:var(--r-lg);background:var(--panel);overflow:hidden;position:relative}
+.stack{display:grid;gap:32px;padding-bottom:32px}
+
+/* photo panel */
+.photo{background:var(--mist);display:grid;grid-template-columns:1fr 1.05fr;min-height:620px}
+.photo .copy{padding:72px 64px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.photo .copy h2{font-size:clamp(34px,4.2vw,56px);line-height:1.02;letter-spacing:-.03em}
+.photo .copy p{font-size:18px;color:var(--ink-2);max-width:40ch;margin-top:20px}
+.photo .img{position:relative;min-height:420px;background:#F2F2F0}
+.photo .img img,.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .img img{object-position:62% 40%}
+.tag{display:inline-flex;align-self:flex-start;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:14px}
+@media (max-width:900px){.photo{grid-template-columns:1fr}.photo .copy{padding:44px 28px}.photo .img{min-height:380px;order:-1}}
+
+/* product panel: centred title, pill, four columns, then UI */
+.product{text-align:center;padding:80px 32px 0}
+.product h2{font-size:clamp(36px,4.4vw,56px);letter-spacing:-.03em;line-height:1}
+.product > p{margin:18px auto 0;max-width:52ch;font-size:18px;color:var(--ink-2)}
+.product .pill{margin-top:24px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;max-width:1040px;margin:56px auto 0;text-align:center}
+.four h3{font-family:var(--body);font-size:16px;font-weight:600;letter-spacing:-.01em;margin-top:12px}
+.four p{font-size:15px;color:var(--ink-2);margin-top:2px}
+.glyph{width:30px;height:22px;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between}
+.glyph i{height:4px;border-radius:2px;background:var(--ink)}
+.glyph i:nth-child(2){width:60%}
+.g2 i:nth-child(2){margin-left:auto}
+.g3 i:nth-child(1){width:40%}.g3 i:nth-child(2){width:70%}
+.g4 i:nth-child(3){background:var(--orange)}
+@media (max-width:820px){.four{grid-template-columns:repeat(2,1fr)}}
+
+/* app mock — one record, illustrative */
+.device{margin:64px auto 0;max-width:1000px;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -1px 0 var(--line),0 30px 60px -30px rgba(0,0,0,.25);text-align:left;overflow:hidden}
+.bar{display:flex;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#E2E2DE}
+.app{display:grid;grid-template-columns:190px 1fr 320px;min-height:380px;font-size:14px}
+.side{border-right:1px solid var(--line);padding:18px 14px;display:grid;align-content:start;gap:4px;color:var(--ink-2)}
+.side .wm{font-size:15px;margin:0 6px 16px}
+.side span{padding:8px 10px;border-radius:8px}
+.side span.on{background:var(--orange-soft);color:var(--ink);font-weight:600}
+.main{padding:22px 26px}
+.main h4{margin:0;font-family:var(--head);font-size:20px;font-weight:600;letter-spacing:-.02em}
+.main .sub{color:var(--muted);font-size:13.5px;margin-top:2px}
+.stages{display:flex;gap:6px;margin:18px 0 20px;flex-wrap:wrap}
+.stages span{font-size:12.5px;padding:5px 10px;border-radius:999px;background:var(--mist);color:var(--ink-2)}
+.stages span.done{background:#EDEDEA;color:var(--ink)}
+.stages span.now{background:var(--ink);color:#fff}
+.kv{display:grid;grid-template-columns:110px 1fr;row-gap:11px;column-gap:12px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.draft{border-left:1px solid var(--line);padding:22px;background:#FFFCF8}
+.draft small{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-ink)}
+.draft small::before{content:"";width:12px;height:3px;border-radius:2px;background:var(--orange)}
+.draft p{margin-top:12px;color:var(--ink-2);font-size:13.5px;line-height:1.55}
+.draft ul{margin:10px 0 0;padding-left:16px;color:var(--ink-2);font-size:13.5px}
+.draft .act{display:flex;gap:8px;margin-top:18px}
+.draft .act span{font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff}
+.draft .act span.y{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media (max-width:900px){.app{grid-template-columns:1fr}.side{display:none}.draft{border-left:0;border-top:1px solid var(--line)}}
+.caption{font-size:13px;color:var(--muted);padding:14px 0 26px}
+
+/* statement panel — dark */
+.statement{background:var(--ink);color:#fff;padding:96px 64px}
+.statement .tag{background:transparent;border-color:#333;color:#cfcfcf}
+.statement h2{font-size:clamp(40px,6vw,84px);line-height:.98;letter-spacing:-.035em;margin-top:28px;max-width:14ch}
+.statement h2 span{color:var(--orange)}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:72px}
+.rules div{border-top:1px solid #2c2c2c;padding-top:20px}
+.rules h3{font-family:var(--body);font-size:17px;font-weight:600}
+.rules p{color:#a9a9a6;margin-top:8px;font-size:15.5px}
+@media (max-width:860px){.statement{padding:64px 28px}.rules{grid-template-columns:1fr;gap:4px}}
+
+/* statement split with photo */
+.statement.split{display:grid;grid-template-columns:1.15fr .85fr;gap:0;padding:0}
+.statement.split .txt{padding:96px 64px}
+.statement.split .shot{position:relative;min-height:520px}
+.statement.split .shot img{object-position:38% 50%}
+.statement.split .rules{grid-template-columns:1fr;gap:0;margin-top:56px}
+.statement.split .rules div{padding:20px 0}
+@media (max-width:980px){.statement.split{grid-template-columns:1fr}.statement.split .shot{min-height:360px;order:-1}.statement.split .txt{padding:56px 28px}}
+
+/* wide photo band */
+.band{position:relative;min-height:620px;color:#fff;display:flex;align-items:flex-end}
+.band .shot{position:absolute;inset:0}
+.band .shot img{object-position:50% 12%}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62) 100%)}
+.band .txt{position:relative;z-index:1;padding:56px 64px;max-width:760px}
+.band h2{font-size:clamp(32px,4.2vw,56px);line-height:1.02;letter-spacing:-.03em}
+.band p{margin-top:14px;font-size:18px;color:rgba(255,255,255,.86);max-width:48ch}
+@media (max-width:760px){.band{min-height:460px}.band .txt{padding:32px 26px}}
+
+/* flow — horizontal track */
+.flow{padding:80px 64px;background:var(--mist)}
+.flow h2{font-size:clamp(32px,3.8vw,48px);letter-spacing:-.03em;max-width:18ch}
+.flow > p{color:var(--ink-2);font-size:18px;margin-top:16px;max-width:56ch}
+.track{display:grid;grid-template-columns:repeat(7,1fr);margin-top:56px;counter-reset:s}
+.track div{padding-right:18px}
+.track div::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:12px;color:var(--muted);font-weight:600}
+.track div::after{content:"";display:block;height:4px;border-radius:2px;background:var(--ink);margin:12px 0 0;order:-1}
+.track h3{font-family:var(--body);font-size:16px;font-weight:600;margin-top:16px}
+.track p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.track .gate::after{background:var(--orange)}
+.track .gate h3{color:var(--orange-ink)}
+.live{display:inline-flex;gap:8px;align-items:center;font-size:12.5px;font-weight:600;margin-top:10px;color:var(--ink-2)}
+.live.next{color:var(--orange-ink)}
+@media (max-width:980px){.flow{padding:56px 28px}.track{grid-template-columns:repeat(2,1fr);row-gap:28px}}
+
+/* two cards: live / next */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.card{border-radius:var(--r-lg);padding:56px;background:var(--panel)}
+.card.next{background:#fff;border:1px solid var(--line)}
+.card h2{font-size:clamp(28px,3vw,40px);letter-spacing:-.03em;margin-top:20px}
+.card ul{list-style:none;margin:32px 0 0;padding:0}
+.card li{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;padding:16px 0;border-top:1px solid rgba(0,0,0,.08)}
+.card li b{font-weight:600}
+.card li span{color:var(--ink-2);font-size:15px}
+@media (max-width:900px){.duo{grid-template-columns:1fr}.card{padding:36px 26px}.card li{grid-template-columns:1fr;gap:2px}}
+
+/* data */
+.data{padding:80px 64px;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;background:var(--panel)}
+.data .shot{position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;margin-top:36px}
+.data .shot img{object-position:60% 50%}
+.data h2{font-size:clamp(32px,3.8vw,48px);letter-spacing:-.03em}
+.data > div > p{color:var(--ink-2);font-size:18px;margin-top:16px;max-width:40ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fact{background:#fff;border-radius:var(--r-md);padding:24px}
+.fact b{font-family:var(--head);font-weight:600;font-size:18px;letter-spacing:-.02em}
+.fact p{color:var(--ink-2);font-size:15px;margin-top:6px}
+@media (max-width:900px){.data{grid-template-columns:1fr;padding:56px 28px;gap:32px}.facts{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{text-align:center;padding:120px 0 104px}
+.close{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--mist);margin-top:0}
+.close .shot{position:relative;min-height:560px}
+.close .shot img{object-position:35% 40%}
+.close .txt{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left}
+.close .txt .wm{font-size:clamp(40px,5vw,72px)}
+.close .txt h2{font-size:clamp(28px,3.2vw,44px);letter-spacing:-.03em;margin-top:36px}
+.close .txt p{color:var(--ink-2);font-size:18px;max-width:44ch;margin-top:16px}
+.close .txt .ctas{margin-top:28px}
+@media (max-width:900px){.close{grid-template-columns:1fr}.close .shot{min-height:380px}.close .txt{padding:48px 28px}}
+.cta .wm{font-size:clamp(56px,10vw,128px)}
+.cta h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.03em;margin-top:40px}
+.cta p{color:var(--ink-2);font-size:18px;max-width:52ch;margin:16px auto 0}
+.cta .ctas{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:40px 0 56px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer .wm{font-size:18px}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="Teleport home" class="wm">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</a>
+    <ul>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#ai">Controlled AI</a></li>
+      <li><a href="#flow">How it works</a></li>
+      <li><a href="#data">Your data</a></li>
+    </ul>
+    <span class="spacer"></span>
+    <a class="pill black" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book an intro</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero wrap">
+  <h1>The operating system for <span class="o">recruitment agencies</span></h1>
+  <p>Companies, candidates, jobs, pipeline and placements in one record — so consultants spend the day placing people, not re-typing them.</p>
+  <div class="ctas">
+    <a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book a 15-minute walkthrough</a>
+    <a class="pill big" style="border:1px solid var(--line)" href="#product">See the product</a>
+  </div>
+</section>
+
+<div class="wrap proof" aria-label="About Teleport">
+  <span><b>Live</b> at a Hong Kong agency</span>
+  <span><b>English &amp; 中文</b> search</span>
+  <span><b>Your own</b> isolated database</span>
+  <span><b>Built in</b> Hong Kong</span>
+</div>
+
+<div class="wrap stack">
+
+  <!-- PHOTO PANEL (brand cover image) -->
+  <section class="panel photo rv" aria-label="Teleport HR Operating System">
+    <div class="copy">
+      <span class="tag">Teleport HR Operating System</span>
+      <div>
+        <h2>Built inside a working agency, for the desks that place people.</h2>
+        <p>Teleport began as our own agency’s system. Every feature runs on live roles before we offer it to yours.</p>
+      </div>
+      <div><a class="pill black big" href="#flow">How it works</a></div>
+    </div>
+    <div class="img"><img class="" src="assets/people/hero-tablet-1200.jpg" srcset="assets/people/hero-tablet-1200.jpg 1200w, assets/people/hero-tablet-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 50vw" alt="Consultant reviewing a candidate profile on a tablet" fetchpriority="high" decoding="async"></div>
+  </section>
+
+  <!-- PRODUCT PANEL -->
+  <section class="panel product rv" id="product">
+    <h2>One record, first CV to placed</h2>
+    <p>The best of an ATS and a CRM in one place, with AI that reads CVs and searches the way consultants think.</p>
+    <a class="pill orange big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">See it on your roles</a>
+    <div class="four">
+      <div><div class="glyph"><i></i><i></i><i></i></div><h3>Source</h3><p>CV in, profile filled by AI</p></div>
+      <div><div class="glyph g2"><i></i><i></i><i></i></div><h3>Search</h3><p>By meaning, in English or 中文</p></div>
+      <div><div class="glyph g3"><i></i><i></i><i></i></div><h3>Pipeline</h3><p>Every candidate, every stage</p></div>
+      <div><div class="glyph g4"><i></i><i></i><i></i></div><h3>Place</h3><p>Placements and fees tracked</p></div>
+    </div>
+
+    <figure class="device" style="margin-bottom:0" aria-label="Illustration of a candidate record">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="app">
+        <nav class="side" aria-hidden="true">
+          <span class="wm">T<span class="e"><i></i><i></i><i></i></span>L<span class="e r"><i></i><i></i><i></i></span>PORT</span>
+          <span>Companies</span><span class="on">People</span><span>Jobs</span><span>Placements</span><span>Search</span>
+        </nav>
+        <div class="main">
+          <h4>Regional Finance Manager</h4>
+          <div class="sub">Candidate · Hong Kong · EN / 中文</div>
+          <div class="stages"><span class="done">Sourced</span><span class="done">Interested</span><span class="now">Shortlisted</span><span>Sent</span><span>Interview</span><span>Placed</span></div>
+          <dl class="kv">
+            <dt>Job</dt><dd>Finance Manager, APAC</dd>
+            <dt>Client</dt><dd>Manufacturing group</dd>
+            <dt>CV</dt><dd>Parsed into profile · checked by consultant</dd>
+            <dt>Activity</dt><dd>Call logged · interest confirmed</dd>
+          </dl>
+        </div>
+        <aside class="draft">
+          <small>AI draft · client write-up</small>
+          <p>Please find the candidate’s profile for your consideration of the Finance Manager, APAC role.</p>
+          <ul><li>Regional FP&amp;A across 6 markets</li><li>Qualified accountant</li><li>Manufacturing background</li></ul>
+          <div class="act"><span class="y">Approve</span><span>Edit</span><span>Reject</span></div>
+        </aside>
+      </div>
+    </figure>
+  </section>
+  <p class="caption wrap" style="padding-left:0;margin-top:-18px">Illustrative record. The AI write-up panel is Controlled AI, in development with our launch agency.</p>
+
+  <!-- CONTROLLED AI -->
+  <section class="panel statement split rv" id="ai">
+    <div class="txt">
+    <span class="tag">Controlled AI</span>
+    <h2>AI drafts. <span>Your consultant decides.</span></h2>
+    <div class="rules">
+      <div><h3>Nothing leaves without a yes</h3><p>Every write-up, client CV and email stays a draft until a consultant approves it. No autonomous sending.</p></div>
+      <div><h3>Every match explains itself</h3><p>When Teleport suggests a person, it says why — in words your consultant can check against the CV.</p></div>
+      <div><h3>Numbers come from your data</h3><p>Counts and reports are read from the database, never guessed by a chatbot.</p></div>
+    </div>
+    </div>
+    <div class="shot"><img class="" src="assets/people/consultant-orange-1200.jpg" srcset="assets/people/consultant-orange-1200.jpg 1200w, assets/people/consultant-orange-2400.jpg 2400w" sizes="(max-width:980px) 100vw, 40vw" alt="Consultant reviewing work at a laptop" loading="lazy" decoding="async"></div>
+  </section>
+
+  <!-- PEOPLE BAND -->
+  <section class="panel band rv" aria-label="Consultant meeting a candidate">
+    <div class="shot"><img class="" src="assets/people/meeting-1200.jpg" srcset="assets/people/meeting-1200.jpg 1200w, assets/people/meeting-2400.jpg 2400w" sizes="100vw" alt="Consultant meeting a candidate in a lounge" loading="lazy" decoding="async"></div>
+    <div class="txt">
+      <h2>Recruitment is still a people business.</h2>
+      <p>Teleport takes the re-typing, reformatting and chasing off the desk — so the hours go to the conversations that fill roles.</p>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="panel flow rv" id="flow">
+    <h2>One flow, the way a desk actually works.</h2>
+    <p>From a new role to a placement — every step on the same record.</p>
+    <div class="track">
+      <div><h3>Source</h3><p>Bring in CVs and contacts.</p><span class="live">Live</span></div>
+      <div><h3>Match</h3><p>Search your own pool by meaning.</p><span class="live">Live</span></div>
+      <div><h3>Shortlist</h3><p>Title, company, salary at a glance.</p><span class="live">Live</span></div>
+      <div><h3>Write-up</h3><p>The pitch for this person, this role.</p><span class="live next">Building</span></div>
+      <div><h3>Client CV</h3><p>Your format, contact details hidden.</p><span class="live next">Building</span></div>
+      <div class="gate"><h3>Approve</h3><p>A consultant signs off. Always.</p><span class="live next">Building</span></div>
+      <div><h3>Send &amp; place</h3><p>Feedback, interviews, placement fee.</p><span class="live">Placement live</span></div>
+    </div>
+  </section>
+
+  <!-- LIVE / NEXT -->
+  <div class="duo rv">
+    <section class="card">
+      <span class="tag">Live today</span>
+      <h2>In production now</h2>
+      <ul>
+        <li><b>Companies &amp; contacts</b><span>Clients, hiring managers and the activity behind each one.</span></li>
+        <li><b>Talent pool &amp; smart search</b><span>English or 中文, by meaning, title, company or skill.</span></li>
+        <li><b>CV in, profile out</b><span>AI fills the profile for the consultant to check.</span></li>
+        <li><b>Jobs, pipeline &amp; shortlists</b><span>Every candidate’s stage on every role.</span></li>
+        <li><b>Placements &amp; fees</b><span>Close the loop from first call to placement fee.</span></li>
+      </ul>
+    </section>
+    <section class="card next">
+      <span class="tag" style="color:var(--orange-ink);border-color:#FFD3A6">In development</span>
+      <h2>Building with our launch agency</h2>
+      <ul>
+        <li><b>Match reasons</b><span>Why this person fits this role, written out.</span></li>
+        <li><b>Write-up drafts</b><span>Client pitches in your desk’s own format.</span></li>
+        <li><b>Branded client CVs</b><span>Your template, your logo, contacts hidden.</span></li>
+        <li><b>Send &amp; track</b><span>Client emails and feedback stay on the record.</span></li>
+        <li><b>Your brand</b><span>Your logo and colours, so clients see your agency.</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- DATA -->
+  <section class="panel data rv" id="data">
+    <div>
+      <span class="tag">Your data</span>
+      <h2 style="margin-top:20px">Your candidates stay yours.</h2>
+      <p>Agencies told us their first fear: a platform that looks like it belongs to someone else. So we built the opposite.</p>
+      <div class="shot"><img class="" src="assets/people/cafe-laptop-1200.jpg" srcset="assets/people/cafe-laptop-1200.jpg 1200w, assets/people/cafe-laptop-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 40vw" alt="Consultant working on a laptop" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Your own instance</b><p>An isolated database per agency — not a shared pool.</p></div>
+      <div class="fact"><b>No marketplace</b><p>We never pool or resell candidates between clients.</p></div>
+      <div class="fact"><b>Demos on synthetic data</b><p>Prospects see made-up Hong Kong records, never a live agency’s.</p></div>
+      <div class="fact"><b>PDPO in mind</b><p>Designed with Hong Kong’s privacy ordinance in mind. Migration from your current system scoped with you.</p></div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="panel close rv" id="contact">
+    <div class="shot"><img class="" src="assets/people/handshake-1200.jpg" srcset="assets/people/handshake-1200.jpg 1200w, assets/people/handshake-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 50vw" alt="Consultant shaking hands after a placement" loading="lazy" decoding="async"></div>
+    <div class="txt">
+      <span class="wm" aria-label="Teleport">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</span>
+      <h2>Fifteen minutes. Your workflow. No slides.</h2>
+      <p>We walk one role from new job to placement on a demo with Hong Kong sample data — and show what moving your database would take.</p>
+      <div class="ctas"><a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book an intro</a></div>
+    </div>
+  </section>
+
+</div>
+<div style="height:32px"></div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wm">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</span>
+    <span>HR Operating System · Hong Kong · © <span id="yr">2026</span></span>
+    <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
