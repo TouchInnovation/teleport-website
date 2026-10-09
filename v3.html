@@ -274,7 +274,7 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
 
 <main id="top">
 
-<section class="hero wrap">
+<section class="hero wrap" id="hero">
   <h1 data-i18n="hero.h1">The operating system for <span class="o">recruitment agencies</span></h1>
   <p data-i18n="hero.p">Companies, candidates, jobs, pipeline and placements in one record — so consultants spend the day placing people, not re-typing them.</p>
   <div class="ctas">
@@ -293,7 +293,7 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
 <div class="wrap stack">
 
   <!-- PHOTO PANEL (brand cover image) -->
-  <section class="panel photo rv" aria-label="Teleport HR Operating System">
+  <section class="panel photo rv" id="story" aria-label="Teleport HR Operating System">
     <div class="copy">
       <span class="tag" data-i18n="photo.tag">Teleport HR Operating System</span>
       <div>
@@ -361,7 +361,7 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
   </section>
 
   <!-- PEOPLE BAND -->
-  <section class="panel band rv" aria-label="Consultant meeting a candidate">
+  <section class="panel band rv" id="people" aria-label="Consultant meeting a candidate">
     <div class="shot"><img class="" src="assets/people/meeting-1200.jpg" srcset="assets/people/meeting-1200.jpg 1200w, assets/people/meeting-2400.jpg 2400w" sizes="100vw" alt="Consultant meeting a candidate in a lounge" loading="lazy" decoding="async"></div>
     <div class="txt">
       <h2 data-i18n="band.h2">Recruitment is still a people business.</h2>
@@ -386,7 +386,7 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
 
   <!-- LIVE / NEXT -->
   <div class="duo rv">
-    <section class="card">
+    <section class="card" id="live">
       <span class="tag" data-i18n="duo.live">Live today</span>
       <h2 data-i18n="duo.live.h2">In production now</h2>
       <ul>
@@ -397,7 +397,7 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
         <li><b data-i18n="l5">Placements &amp; fees</b><span data-i18n="l5.p">Close the loop from first call to placement fee.</span></li>
       </ul>
     </section>
-    <section class="card next">
+    <section class="card next" id="next">
       <span class="tag" style="color:var(--orange-ink);border-color:#FFD3A6" data-i18n="duo.next">In development</span>
       <h2 data-i18n="duo.next.h2">Building with our launch agency</h2>
       <ul>
@@ -496,5 +496,6 @@ html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
   apply(pick(), false);
 })();
 </script>
+<script src="assets/analytics.js" defer></script>
 </body>
 </html>

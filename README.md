@@ -17,6 +17,19 @@ Both pages have an **EN / 繁 / 简** switch in the nav (English, Traditional Ch
 - The choice is remembered in the browser; first visit follows the browser language (zh-HK/TW → 繁, zh-CN/SG → 简)
 - Translations live in `tools/add_i18n.py` (one table: key, English, 繁, 简). To change copy, edit the table, restore the English HTML, and re-run `python3 tools/add_i18n.py index.html v3.html`. The script tags elements with `data-i18n` and is a no-op on already-tagged pages.
 
+## Analytics (GA4)
+
+`assets/analytics.js` is loaded by both pages. Paste the web-stream measurement ID into `GA_MEASUREMENT_ID` at the top of that file. Until then it does nothing, and it never runs on `file://` previews.
+
+Events (each carries `page_variant` v2/v3 and `site_language`):
+
+- `generate_lead` — mailto / Book clicks. Mark as a **Key event** in GA4.
+- `cta_click` — every button, with `cta_text` and `cta_location`
+- `language_switch` — `from_language` → `to_language`
+- `section_view` — each main section seen (50%)
+
+In GA4 → Admin → Custom definitions, register event-scoped dimensions `page_variant`, `site_language`, `cta_location`, `section_id`, `to_language` to compare v2 vs v3 in reports.
+
 ## Preview locally
 
 Open `index.html` in a browser, or run `npx serve .`
@@ -32,6 +45,7 @@ Import this repo into Vercel as a static site (Framework preset: Other, no build
 - [ ] Confirm the brand orange — `--orange: #FF8200` is sampled from the cover, not an approved hex
 - [ ] Confirm rights to use the cover / character photos publicly (check licence)
 - [ ] Native-speaker review of the 繁 / 简 copy
+- [ ] Paste the GA4 measurement ID into `assets/analytics.js`
 - [ ] Connect a domain
 
 ## Copy rule
