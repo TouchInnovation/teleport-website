@@ -236,6 +236,23 @@ footer .wm{font-size:18px}
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
+
+/* ---------- Language switch ---------- */
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:#fff}
+.lang button{all:unset;cursor:pointer;min-width:34px;height:32px;padding:0 10px;border-radius:999px;font-size:14px;font-weight:500;text-align:center;line-height:32px;color:var(--ink-2)}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.lang button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+@media (max-width:520px){.nav .pill.black{display:none}}
+/* CJK typography */
+html:lang(zh-HK) body{font-family:"Inter","PingFang HK","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+html:lang(zh-CN) body{font-family:"Inter","PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif}
+html:lang(zh-HK) h1,html:lang(zh-HK) h2,html:lang(zh-HK) h3,html:lang(zh-HK) .wm~*{font-family:inherit}
+html:lang(zh-CN) h1,html:lang(zh-CN) h2,html:lang(zh-CN) h3{font-family:inherit}
+html:lang(zh) body{letter-spacing:.01em;line-height:1.6}
+html:lang(zh) h1,html:lang(zh) h2{letter-spacing:0;line-height:1.18;font-weight:600}
+html:lang(zh) .hero h1{max-width:12em}
+html:lang(zh) .statement h2,html:lang(zh) .photo .copy h2{max-width:13em}
 </style>
 </head>
 <body>
@@ -244,32 +261,33 @@ footer .wm{font-size:18px}
   <div class="wrap nav">
     <a href="#top" aria-label="Teleport home" class="wm">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</a>
     <ul>
-      <li><a href="#product">Product</a></li>
-      <li><a href="#ai">Controlled AI</a></li>
-      <li><a href="#flow">How it works</a></li>
-      <li><a href="#data">Your data</a></li>
+      <li><a href="#product" data-i18n="nav.product">Product</a></li>
+      <li><a href="#ai" data-i18n="nav.ai">Controlled AI</a></li>
+      <li><a href="#flow" data-i18n="nav.how">How it works</a></li>
+      <li><a href="#data" data-i18n="nav.data">Your data</a></li>
     </ul>
     <span class="spacer"></span>
-    <a class="pill black" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book an intro</a>
+    <div class="lang" role="group" aria-label="Language / 語言"><button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button><button type="button" data-lang="zh-HK" lang="zh-HK" aria-pressed="false" title="繁體中文">繁</button><button type="button" data-lang="zh-CN" lang="zh-CN" aria-pressed="false" title="简体中文">简</button></div>
+    <a class="pill black" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough" data-i18n="cta.intro">Book an intro</a>
   </div>
 </header>
 
 <main id="top">
 
 <section class="hero wrap">
-  <h1>The operating system for <span class="o">recruitment agencies</span></h1>
-  <p>Companies, candidates, jobs, pipeline and placements in one record — so consultants spend the day placing people, not re-typing them.</p>
+  <h1 data-i18n="hero.h1">The operating system for <span class="o">recruitment agencies</span></h1>
+  <p data-i18n="hero.p">Companies, candidates, jobs, pipeline and placements in one record — so consultants spend the day placing people, not re-typing them.</p>
   <div class="ctas">
-    <a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book a 15-minute walkthrough</a>
-    <a class="pill big" style="border:1px solid var(--line)" href="#product">See the product</a>
+    <a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough" data-i18n="hero.cta1">Book a 15-minute walkthrough</a>
+    <a class="pill big" style="border:1px solid var(--line)" href="#product" data-i18n="hero.cta2">See the product</a>
   </div>
 </section>
 
 <div class="wrap proof" aria-label="About Teleport">
-  <span><b>Live</b> at a Hong Kong agency</span>
-  <span><b>English &amp; 中文</b> search</span>
-  <span><b>Your own</b> isolated database</span>
-  <span><b>Built in</b> Hong Kong</span>
+  <span data-i18n="proof.live"><b>Live</b> at a Hong Kong agency</span>
+  <span data-i18n="proof.lang"><b>English &amp; 中文</b> search</span>
+  <span data-i18n="proof.db"><b>Your own</b> isolated database</span>
+  <span data-i18n="proof.hk"><b>Built in</b> Hong Kong</span>
 </div>
 
 <div class="wrap stack">
@@ -277,26 +295,26 @@ footer .wm{font-size:18px}
   <!-- PHOTO PANEL (brand cover image) -->
   <section class="panel photo rv" aria-label="Teleport HR Operating System">
     <div class="copy">
-      <span class="tag">Teleport HR Operating System</span>
+      <span class="tag" data-i18n="photo.tag">Teleport HR Operating System</span>
       <div>
-        <h2>Built inside a working agency, for the desks that place people.</h2>
-        <p>Teleport began as our own agency’s system. Every feature runs on live roles before we offer it to yours.</p>
+        <h2 data-i18n="photo.h2">Built inside a working agency, for the desks that place people.</h2>
+        <p data-i18n="photo.p">Teleport began as our own agency’s system. Every feature runs on live roles before we offer it to yours.</p>
       </div>
-      <div><a class="pill black big" href="#flow">How it works</a></div>
+      <div><a class="pill black big" href="#flow" data-i18n="nav.how">How it works</a></div>
     </div>
     <div class="img"><img class="" src="assets/people/hero-tablet-1200.jpg" srcset="assets/people/hero-tablet-1200.jpg 1200w, assets/people/hero-tablet-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 50vw" alt="Consultant reviewing a candidate profile on a tablet" fetchpriority="high" decoding="async"></div>
   </section>
 
   <!-- PRODUCT PANEL -->
   <section class="panel product rv" id="product">
-    <h2>One record, first CV to placed</h2>
-    <p>The best of an ATS and a CRM in one place, with AI that reads CVs and searches the way consultants think.</p>
-    <a class="pill orange big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">See it on your roles</a>
+    <h2 data-i18n="prod.h2">One record, first CV to placed</h2>
+    <p data-i18n="prod.p">The best of an ATS and a CRM in one place, with AI that reads CVs and searches the way consultants think.</p>
+    <a class="pill orange big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough" data-i18n="prod.cta">See it on your roles</a>
     <div class="four">
-      <div><div class="glyph"><i></i><i></i><i></i></div><h3>Source</h3><p>CV in, profile filled by AI</p></div>
-      <div><div class="glyph g2"><i></i><i></i><i></i></div><h3>Search</h3><p>By meaning, in English or 中文</p></div>
-      <div><div class="glyph g3"><i></i><i></i><i></i></div><h3>Pipeline</h3><p>Every candidate, every stage</p></div>
-      <div><div class="glyph g4"><i></i><i></i><i></i></div><h3>Place</h3><p>Placements and fees tracked</p></div>
+      <div><div class="glyph"><i></i><i></i><i></i></div><h3 data-i18n="four.source">Source</h3><p data-i18n="four.source.p">CV in, profile filled by AI</p></div>
+      <div><div class="glyph g2"><i></i><i></i><i></i></div><h3 data-i18n="four.search">Search</h3><p data-i18n="four.search.p">By meaning, in English or 中文</p></div>
+      <div><div class="glyph g3"><i></i><i></i><i></i></div><h3 data-i18n="four.pipe">Pipeline</h3><p data-i18n="four.pipe.p">Every candidate, every stage</p></div>
+      <div><div class="glyph g4"><i></i><i></i><i></i></div><h3 data-i18n="four.place">Place</h3><p data-i18n="four.place.p">Placements and fees tracked</p></div>
     </div>
 
     <figure class="device" style="margin-bottom:0" aria-label="Illustration of a candidate record">
@@ -304,39 +322,39 @@ footer .wm{font-size:18px}
       <div class="app">
         <nav class="side" aria-hidden="true">
           <span class="wm">T<span class="e"><i></i><i></i><i></i></span>L<span class="e r"><i></i><i></i><i></i></span>PORT</span>
-          <span>Companies</span><span class="on">People</span><span>Jobs</span><span>Placements</span><span>Search</span>
+          <span data-i18n="app.companies">Companies</span><span class="on" data-i18n="app.people">People</span><span data-i18n="app.jobs">Jobs</span><span data-i18n="app.placements">Placements</span><span data-i18n="four.search">Search</span>
         </nav>
         <div class="main">
-          <h4>Regional Finance Manager</h4>
-          <div class="sub">Candidate · Hong Kong · EN / 中文</div>
-          <div class="stages"><span class="done">Sourced</span><span class="done">Interested</span><span class="now">Shortlisted</span><span>Sent</span><span>Interview</span><span>Placed</span></div>
+          <h4 data-i18n="app.title">Regional Finance Manager</h4>
+          <div class="sub" data-i18n="app.sub">Candidate · Hong Kong · EN / 中文</div>
+          <div class="stages"><span class="done" data-i18n="st.sourced">Sourced</span><span class="done" data-i18n="st.interested">Interested</span><span class="now" data-i18n="st.short">Shortlisted</span><span data-i18n="st.sent">Sent</span><span data-i18n="st.interview">Interview</span><span data-i18n="st.placed">Placed</span></div>
           <dl class="kv">
-            <dt>Job</dt><dd>Finance Manager, APAC</dd>
-            <dt>Client</dt><dd>Manufacturing group</dd>
-            <dt>CV</dt><dd>Parsed into profile · checked by consultant</dd>
-            <dt>Activity</dt><dd>Call logged · interest confirmed</dd>
+            <dt data-i18n="kv.job">Job</dt><dd data-i18n="kv.job.v">Finance Manager, APAC</dd>
+            <dt data-i18n="kv.client">Client</dt><dd data-i18n="kv.client.v">Manufacturing group</dd>
+            <dt data-i18n="kv.cv">CV</dt><dd data-i18n="kv.cv.v">Parsed into profile · checked by consultant</dd>
+            <dt data-i18n="kv.act">Activity</dt><dd data-i18n="kv.act.v">Call logged · interest confirmed</dd>
           </dl>
         </div>
         <aside class="draft">
-          <small>AI draft · client write-up</small>
-          <p>Please find the candidate’s profile for your consideration of the Finance Manager, APAC role.</p>
-          <ul><li>Regional FP&amp;A across 6 markets</li><li>Qualified accountant</li><li>Manufacturing background</li></ul>
-          <div class="act"><span class="y">Approve</span><span>Edit</span><span>Reject</span></div>
+          <small data-i18n="draft.tag">AI draft · client write-up</small>
+          <p data-i18n="draft.p">Please find the candidate’s profile for your consideration of the Finance Manager, APAC role.</p>
+          <ul data-i18n="draft.ul"><li>Regional FP&amp;A across 6 markets</li><li>Qualified accountant</li><li>Manufacturing background</li></ul>
+          <div class="act"><span class="y" data-i18n="draft.approve">Approve</span><span data-i18n="draft.edit">Edit</span><span data-i18n="draft.reject">Reject</span></div>
         </aside>
       </div>
     </figure>
   </section>
-  <p class="caption wrap" style="padding-left:0;margin-top:-18px">Illustrative record. The AI write-up panel is Controlled AI, in development with our launch agency.</p>
+  <p class="caption wrap" style="padding-left:0;margin-top:-18px" data-i18n="caption">Illustrative record. The AI write-up panel is Controlled AI, in development with our launch agency.</p>
 
   <!-- CONTROLLED AI -->
   <section class="panel statement split rv" id="ai">
     <div class="txt">
-    <span class="tag">Controlled AI</span>
-    <h2>AI drafts. <span>Your consultant decides.</span></h2>
+    <span class="tag" data-i18n="nav.ai">Controlled AI</span>
+    <h2 data-i18n="ai.h2">AI drafts. <span>Your consultant decides.</span></h2>
     <div class="rules">
-      <div><h3>Nothing leaves without a yes</h3><p>Every write-up, client CV and email stays a draft until a consultant approves it. No autonomous sending.</p></div>
-      <div><h3>Every match explains itself</h3><p>When Teleport suggests a person, it says why — in words your consultant can check against the CV.</p></div>
-      <div><h3>Numbers come from your data</h3><p>Counts and reports are read from the database, never guessed by a chatbot.</p></div>
+      <div><h3 data-i18n="ai.r1">Nothing leaves without a yes</h3><p data-i18n="ai.r1.p">Every write-up, client CV and email stays a draft until a consultant approves it. No autonomous sending.</p></div>
+      <div><h3 data-i18n="ai.r2">Every match explains itself</h3><p data-i18n="ai.r2.p">When Teleport suggests a person, it says why — in words your consultant can check against the CV.</p></div>
+      <div><h3 data-i18n="ai.r3">Numbers come from your data</h3><p data-i18n="ai.r3.p">Counts and reports are read from the database, never guessed by a chatbot.</p></div>
     </div>
     </div>
     <div class="shot"><img class="" src="assets/people/consultant-orange-1200.jpg" srcset="assets/people/consultant-orange-1200.jpg 1200w, assets/people/consultant-orange-2400.jpg 2400w" sizes="(max-width:980px) 100vw, 40vw" alt="Consultant reviewing work at a laptop" loading="lazy" decoding="async"></div>
@@ -346,48 +364,48 @@ footer .wm{font-size:18px}
   <section class="panel band rv" aria-label="Consultant meeting a candidate">
     <div class="shot"><img class="" src="assets/people/meeting-1200.jpg" srcset="assets/people/meeting-1200.jpg 1200w, assets/people/meeting-2400.jpg 2400w" sizes="100vw" alt="Consultant meeting a candidate in a lounge" loading="lazy" decoding="async"></div>
     <div class="txt">
-      <h2>Recruitment is still a people business.</h2>
-      <p>Teleport takes the re-typing, reformatting and chasing off the desk — so the hours go to the conversations that fill roles.</p>
+      <h2 data-i18n="band.h2">Recruitment is still a people business.</h2>
+      <p data-i18n="band.p">Teleport takes the re-typing, reformatting and chasing off the desk — so the hours go to the conversations that fill roles.</p>
     </div>
   </section>
 
   <!-- FLOW -->
   <section class="panel flow rv" id="flow">
-    <h2>One flow, the way a desk actually works.</h2>
-    <p>From a new role to a placement — every step on the same record.</p>
+    <h2 data-i18n="flow.h2">One flow, the way a desk actually works.</h2>
+    <p data-i18n="flow.p">From a new role to a placement — every step on the same record.</p>
     <div class="track">
-      <div><h3>Source</h3><p>Bring in CVs and contacts.</p><span class="live">Live</span></div>
-      <div><h3>Match</h3><p>Search your own pool by meaning.</p><span class="live">Live</span></div>
-      <div><h3>Shortlist</h3><p>Title, company, salary at a glance.</p><span class="live">Live</span></div>
-      <div><h3>Write-up</h3><p>The pitch for this person, this role.</p><span class="live next">Building</span></div>
-      <div><h3>Client CV</h3><p>Your format, contact details hidden.</p><span class="live next">Building</span></div>
-      <div class="gate"><h3>Approve</h3><p>A consultant signs off. Always.</p><span class="live next">Building</span></div>
-      <div><h3>Send &amp; place</h3><p>Feedback, interviews, placement fee.</p><span class="live">Placement live</span></div>
+      <div><h3 data-i18n="four.source">Source</h3><p data-i18n="tr.source.p">Bring in CVs and contacts.</p><span class="live" data-i18n="tr.live">Live</span></div>
+      <div><h3 data-i18n="tr.match">Match</h3><p data-i18n="tr.match.p">Search your own pool by meaning.</p><span class="live" data-i18n="tr.live">Live</span></div>
+      <div><h3 data-i18n="tr.short">Shortlist</h3><p data-i18n="tr.short.p">Title, company, salary at a glance.</p><span class="live" data-i18n="tr.live">Live</span></div>
+      <div><h3 data-i18n="tr.write">Write-up</h3><p data-i18n="tr.write.p">The pitch for this person, this role.</p><span class="live next" data-i18n="tr.building">Building</span></div>
+      <div><h3 data-i18n="tr.cv">Client CV</h3><p data-i18n="tr.cv.p">Your format, contact details hidden.</p><span class="live next" data-i18n="tr.building">Building</span></div>
+      <div class="gate"><h3 data-i18n="draft.approve">Approve</h3><p data-i18n="tr.approve.p">A consultant signs off. Always.</p><span class="live next" data-i18n="tr.building">Building</span></div>
+      <div><h3 data-i18n="tr.send">Send &amp; place</h3><p data-i18n="tr.send.p">Feedback, interviews, placement fee.</p><span class="live" data-i18n="tr.placelive">Placement live</span></div>
     </div>
   </section>
 
   <!-- LIVE / NEXT -->
   <div class="duo rv">
     <section class="card">
-      <span class="tag">Live today</span>
-      <h2>In production now</h2>
+      <span class="tag" data-i18n="duo.live">Live today</span>
+      <h2 data-i18n="duo.live.h2">In production now</h2>
       <ul>
-        <li><b>Companies &amp; contacts</b><span>Clients, hiring managers and the activity behind each one.</span></li>
-        <li><b>Talent pool &amp; smart search</b><span>English or 中文, by meaning, title, company or skill.</span></li>
-        <li><b>CV in, profile out</b><span>AI fills the profile for the consultant to check.</span></li>
-        <li><b>Jobs, pipeline &amp; shortlists</b><span>Every candidate’s stage on every role.</span></li>
-        <li><b>Placements &amp; fees</b><span>Close the loop from first call to placement fee.</span></li>
+        <li><b data-i18n="l1">Companies &amp; contacts</b><span data-i18n="l1.p">Clients, hiring managers and the activity behind each one.</span></li>
+        <li><b data-i18n="l2">Talent pool &amp; smart search</b><span data-i18n="l2.p">English or 中文, by meaning, title, company or skill.</span></li>
+        <li><b data-i18n="l3">CV in, profile out</b><span data-i18n="l3.p">AI fills the profile for the consultant to check.</span></li>
+        <li><b data-i18n="l4">Jobs, pipeline &amp; shortlists</b><span data-i18n="l4.p">Every candidate’s stage on every role.</span></li>
+        <li><b data-i18n="l5">Placements &amp; fees</b><span data-i18n="l5.p">Close the loop from first call to placement fee.</span></li>
       </ul>
     </section>
     <section class="card next">
-      <span class="tag" style="color:var(--orange-ink);border-color:#FFD3A6">In development</span>
-      <h2>Building with our launch agency</h2>
+      <span class="tag" style="color:var(--orange-ink);border-color:#FFD3A6" data-i18n="duo.next">In development</span>
+      <h2 data-i18n="duo.next.h2">Building with our launch agency</h2>
       <ul>
-        <li><b>Match reasons</b><span>Why this person fits this role, written out.</span></li>
-        <li><b>Write-up drafts</b><span>Client pitches in your desk’s own format.</span></li>
-        <li><b>Branded client CVs</b><span>Your template, your logo, contacts hidden.</span></li>
-        <li><b>Send &amp; track</b><span>Client emails and feedback stay on the record.</span></li>
-        <li><b>Your brand</b><span>Your logo and colours, so clients see your agency.</span></li>
+        <li><b data-i18n="n1">Match reasons</b><span data-i18n="n1.p">Why this person fits this role, written out.</span></li>
+        <li><b data-i18n="n2">Write-up drafts</b><span data-i18n="n2.p">Client pitches in your desk’s own format.</span></li>
+        <li><b data-i18n="n3">Branded client CVs</b><span data-i18n="n3.p">Your template, your logo, contacts hidden.</span></li>
+        <li><b data-i18n="n4">Send &amp; track</b><span data-i18n="n4.p">Client emails and feedback stay on the record.</span></li>
+        <li><b data-i18n="n5">Your brand</b><span data-i18n="n5.p">Your logo and colours, so clients see your agency.</span></li>
       </ul>
     </section>
   </div>
@@ -395,16 +413,16 @@ footer .wm{font-size:18px}
   <!-- DATA -->
   <section class="panel data rv" id="data">
     <div>
-      <span class="tag">Your data</span>
-      <h2 style="margin-top:20px">Your candidates stay yours.</h2>
-      <p>Agencies told us their first fear: a platform that looks like it belongs to someone else. So we built the opposite.</p>
+      <span class="tag" data-i18n="nav.data">Your data</span>
+      <h2 style="margin-top:20px" data-i18n="data.h2">Your candidates stay yours.</h2>
+      <p data-i18n="data.p">Agencies told us their first fear: a platform that looks like it belongs to someone else. So we built the opposite.</p>
       <div class="shot"><img class="" src="assets/people/cafe-laptop-1200.jpg" srcset="assets/people/cafe-laptop-1200.jpg 1200w, assets/people/cafe-laptop-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 40vw" alt="Consultant working on a laptop" loading="lazy" decoding="async"></div>
     </div>
     <div class="facts">
-      <div class="fact"><b>Your own instance</b><p>An isolated database per agency — not a shared pool.</p></div>
-      <div class="fact"><b>No marketplace</b><p>We never pool or resell candidates between clients.</p></div>
-      <div class="fact"><b>Demos on synthetic data</b><p>Prospects see made-up Hong Kong records, never a live agency’s.</p></div>
-      <div class="fact"><b>PDPO in mind</b><p>Designed with Hong Kong’s privacy ordinance in mind. Migration from your current system scoped with you.</p></div>
+      <div class="fact"><b data-i18n="f1">Your own instance</b><p data-i18n="f1.p">An isolated database per agency — not a shared pool.</p></div>
+      <div class="fact"><b data-i18n="f2">No marketplace</b><p data-i18n="f2.p">We never pool or resell candidates between clients.</p></div>
+      <div class="fact"><b data-i18n="f3">Demos on synthetic data</b><p data-i18n="f3.p">Prospects see made-up Hong Kong records, never a live agency’s.</p></div>
+      <div class="fact"><b data-i18n="f4">PDPO in mind</b><p data-i18n="f4.p">Designed with Hong Kong’s privacy ordinance in mind. Migration from your current system scoped with you.</p></div>
     </div>
   </section>
 
@@ -413,9 +431,9 @@ footer .wm{font-size:18px}
     <div class="shot"><img class="" src="assets/people/handshake-1200.jpg" srcset="assets/people/handshake-1200.jpg 1200w, assets/people/handshake-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 50vw" alt="Consultant shaking hands after a placement" loading="lazy" decoding="async"></div>
     <div class="txt">
       <span class="wm" aria-label="Teleport">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</span>
-      <h2>Fifteen minutes. Your workflow. No slides.</h2>
-      <p>We walk one role from new job to placement on a demo with Hong Kong sample data — and show what moving your database would take.</p>
-      <div class="ctas"><a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough">Book an intro</a></div>
+      <h2 data-i18n="close.h2">Fifteen minutes. Your workflow. No slides.</h2>
+      <p data-i18n="close.p">We walk one role from new job to placement on a demo with Hong Kong sample data — and show what moving your database would take.</p>
+      <div class="ctas"><a class="pill black big" href="mailto:CONTACT_EMAIL?subject=Teleport%20walkthrough" data-i18n="cta.intro">Book an intro</a></div>
     </div>
   </section>
 
@@ -427,7 +445,7 @@ footer .wm{font-size:18px}
 <footer>
   <div class="wrap">
     <span class="wm">T<span class="e" aria-hidden="true"><i></i><i></i><i></i></span>L<span class="e r" aria-hidden="true"><i></i><i></i><i></i></span>PORT</span>
-    <span>HR Operating System · Hong Kong · © <span id="yr">2026</span></span>
+    <span data-i18n="foot">HR Operating System · Hong Kong · © <span id="yr">2026</span></span>
     <a href="mailto:CONTACT_EMAIL">CONTACT_EMAIL</a>
   </div>
 </footer>
@@ -439,6 +457,43 @@ footer .wm{font-size:18px}
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(e){io.observe(e)});
+})();
+</script>
+
+<script>
+/* i18n: EN / 繁 / 简. ?lang=zh-HK|zh-CN|en overrides; choice saved in localStorage. */
+(function(){
+  var DICT = {"nav.product": ["產品", "产品"], "nav.ai": ["可控 AI", "可控 AI"], "nav.how": ["運作方式", "运作方式"], "nav.data": ["你的資料", "你的数据"], "cta.intro": ["預約示範", "预约演示"], "hero.h1": ["<span class=\"o\">招聘公司</span>的<br>營運系統", "<span class=\"o\">招聘机构</span>的<br>运营系统"], "hero.p": ["客戶公司、候選人、職位、招聘流程與成功入職，全部集中在同一份紀錄——顧問的時間用來促成配對，而不是重複輸入資料。", "客户公司、候选人、职位、招聘流程与成功录用，全部集中在同一条记录里——顾问把时间花在促成录用上，而不是重复录入。"], "hero.cta1": ["預約 15 分鐘示範", "预约 15 分钟演示"], "hero.cta2": ["了解產品", "了解产品"], "proof.live": ["<b>實際運作</b>於香港招聘公司", "<b>实际运行</b>于香港招聘机构"], "proof.lang": ["<b>中英文</b>搜尋", "<b>中英文</b>搜索"], "proof.db": ["<b>獨立</b>專屬資料庫", "<b>独立</b>专属数据库"], "proof.hk": ["<b>香港</b>研發", "<b>香港</b>研发"], "photo.tag": ["Teleport 人力資源營運系統", "Teleport 人力资源运营系统"], "photo.h2": ["在真實的招聘公司內打造，為每天促成入職的顧問而設。", "在真实的招聘机构中打造，为每天促成录用的顾问而设计。"], "photo.p": ["Teleport 源自我們自家招聘公司的系統。每項功能都先在真實職位上運作，才會提供給你。", "Teleport 源自我们自家招聘机构的系统。每项功能都先在真实职位上运行，再提供给你。"], "prod.h2": ["一份紀錄，由第一份履歷到成功入職", "一条记录，从第一份简历到成功录用"], "prod.p": ["集 ATS 與 CRM 之長於一身，配合能讀懂履歷、按顧問思路搜尋的 AI。", "集 ATS 与 CRM 之长于一身，AI 能读懂简历，并按顾问的思路搜索。"], "prod.cta": ["用你的職位試試看", "用你的职位试试看"], "four.source": ["搜羅人才", "寻访人才"], "four.source.p": ["上載履歷，AI 自動填寫檔案", "上传简历，AI 自动填写档案"], "four.search": ["搜尋", "搜索"], "four.search.p": ["按語意搜尋，中英文皆可", "按语义搜索，中英文皆可"], "four.pipe": ["招聘流程", "招聘流程"], "four.pipe.p": ["每位候選人、每個階段", "每位候选人、每个阶段"], "four.place": ["成功入職", "成功录用"], "four.place.p": ["追蹤入職與佣金", "跟踪录用与佣金"], "app.companies": ["公司", "公司"], "app.people": ["人才", "人才"], "app.jobs": ["職位", "职位"], "app.placements": ["入職", "录用"], "app.title": ["區域財務經理", "区域财务经理"], "app.sub": ["候選人 · 香港 · 中 / 英", "候选人 · 香港 · 中 / 英"], "st.sourced": ["已搜羅", "已寻访"], "st.interested": ["有興趣", "有意向"], "st.short": ["已入選", "已入围"], "st.sent": ["已推薦", "已推荐"], "st.interview": ["面試", "面试"], "st.placed": ["已入職", "已录用"], "kv.job": ["職位", "职位"], "kv.job.v": ["亞太區財務經理", "亚太区财务经理"], "kv.client": ["客戶", "客户"], "kv.client.v": ["製造業集團", "制造业集团"], "kv.cv": ["履歷", "简历"], "kv.cv.v": ["已解析至檔案 · 顧問已核對", "已解析至档案 · 顾问已核对"], "kv.act": ["活動", "动态"], "kv.act.v": ["已記錄通話 · 已確認意向", "已记录通话 · 已确认意向"], "draft.tag": ["AI 草稿 · 客戶推薦信", "AI 草稿 · 客户推荐信"], "draft.p": ["現附上候選人資料，供貴公司考慮亞太區財務經理一職。", "现附上候选人资料，供贵公司考虑亚太区财务经理一职。"], "draft.ul": ["<li>橫跨 6 個市場的區域財務規劃與分析</li><li>合資格會計師</li><li>製造業背景</li>", "<li>覆盖 6 个市场的区域财务规划与分析</li><li>持证会计师</li><li>制造业背景</li>"], "draft.approve": ["批准", "批准"], "draft.edit": ["編輯", "编辑"], "draft.reject": ["拒絕", "拒绝"], "caption": ["示意紀錄。AI 推薦信面板屬「可控 AI」功能，正與首家合作招聘公司共同開發。", "示意记录。AI 推荐信面板属于“可控 AI”功能，正与首家合作招聘机构共同开发。"], "ai.h2": ["AI 起草。<span>顧問決定。</span>", "AI 起草。<span>顾问决定。</span>"], "ai.r1": ["未經批准，一律不發出", "未经批准，一律不发出"], "ai.r1.p": ["每份推薦信、客戶版履歷和電郵，在顧問批准前都只是草稿，絕不會自動發送。", "每份推荐信、客户版简历和邮件，在顾问批准前都只是草稿，绝不会自动发送。"], "ai.r2": ["每個配對都有理由", "每个匹配都有理由"], "ai.r2.p": ["Teleport 推薦人選時，會清楚寫出原因，讓顧問可以對照履歷核實。", "Teleport 推荐人选时会写明原因，顾问可以对照简历核实。"], "ai.r3": ["數字來自你的資料", "数字来自你的数据"], "ai.r3.p": ["人數與報表直接讀取資料庫，絕不由聊天機械人估算。", "数量与报表直接读取数据库，绝不由聊天机器人猜测。"], "band.h2": ["招聘，始終是關於人的生意。", "招聘，始终是关于人的生意。"], "band.p": ["Teleport 為顧問處理重複輸入、排版和追進度——把時間留給真正促成招聘的對話。", "Teleport 替顾问处理重复录入、排版和跟进——把时间留给真正促成招聘的沟通。"], "flow.h2": ["一條流程，貼合顧問的實際工作方式。", "一条流程，贴合顾问的实际工作方式。"], "flow.p": ["由新職位到成功入職——每一步都在同一份紀錄上。", "从新职位到成功录用——每一步都在同一条记录上。"], "tr.source.p": ["匯入履歷與聯絡人。", "导入简历与联系人。"], "tr.match": ["配對", "匹配"], "tr.match.p": ["按語意搜尋你的人才庫。", "按语义搜索你的人才库。"], "tr.short": ["篩選名單", "候选名单"], "tr.short.p": ["職銜、公司、薪酬一目了然。", "职位、公司、薪资一目了然。"], "tr.write": ["推薦信", "推荐信"], "tr.write.p": ["為這位人選、這個職位而寫的推介。", "为这位人选、这个职位而写的推介。"], "tr.cv": ["客戶版履歷", "客户版简历"], "tr.cv.p": ["你的格式，隱藏聯絡資料。", "你的格式，隐藏联系方式。"], "tr.approve.p": ["必經顧問簽批。", "必须由顾问签批。"], "tr.send": ["發送及入職", "发送与录用"], "tr.send.p": ["回饋、面試、入職佣金。", "反馈、面试、录用佣金。"], "tr.live": ["已上線", "已上线"], "tr.building": ["開發中", "开发中"], "tr.placelive": ["入職追蹤已上線", "录用跟踪已上线"], "duo.live": ["現已上線", "现已上线"], "duo.live.h2": ["正式運作中", "正式运行中"], "l1": ["公司與聯絡人", "公司与联系人"], "l1.p": ["客戶、招聘經理，以及每段往來紀錄。", "客户、招聘经理，以及每段往来记录。"], "l2": ["人才庫與智能搜尋", "人才库与智能搜索"], "l2.p": ["中英文皆可，按語意、職銜、公司或技能搜尋。", "中英文皆可，按语义、职位、公司或技能搜索。"], "l3": ["上載履歷，自動建檔", "上传简历，自动建档"], "l3.p": ["AI 填寫檔案，再由顧問核對。", "AI 填写档案，再由顾问核对。"], "l4": ["職位、流程與篩選名單", "职位、流程与候选名单"], "l4.p": ["每個職位上每位候選人的進度。", "每个职位上每位候选人的进度。"], "l5": ["入職與佣金", "录用与佣金"], "l5.p": ["由第一通電話到入職佣金，完整跟進。", "从第一通电话到录用佣金，完整跟进。"], "duo.next": ["開發中", "开发中"], "duo.next.h2": ["與首家合作招聘公司共同開發", "与首家合作招聘机构共同开发"], "n1": ["配對理由", "匹配理由"], "n1.p": ["清楚寫出這位人選為何適合這個職位。", "写明这位人选为何适合这个职位。"], "n2": ["推薦信草稿", "推荐信草稿"], "n2.p": ["以你團隊的格式撰寫客戶推介。", "按你团队的格式撰写客户推介。"], "n3": ["品牌客戶版履歷", "品牌客户版简历"], "n3.p": ["你的範本、你的標誌，隱藏聯絡資料。", "你的模板、你的标志，隐藏联系方式。"], "n4": ["發送及追蹤", "发送与跟踪"], "n4.p": ["客戶電郵與回饋都保留在紀錄上。", "客户邮件与反馈都保留在记录上。"], "n5": ["你的品牌", "你的品牌"], "n5.p": ["你的標誌與顏色，客戶看到的是你的公司。", "你的标志与配色，客户看到的是你的公司。"], "data.h2": ["你的候選人，始終屬於你。", "你的候选人，始终属于你。"], "data.p": ["招聘公司告訴我們，最擔心的是平台看起來屬於別人。所以我們反其道而行。", "招聘机构告诉我们，最担心的是平台看起来属于别人。所以我们反其道而行。"], "f1": ["專屬獨立系統", "专属独立系统"], "f1.p": ["每家公司一個獨立資料庫——不是共用的人才池。", "每家机构一个独立数据库——不是共享的人才池。"], "f2": ["不設人才市場", "不设人才市场"], "f2.p": ["我們絕不會在客戶之間匯集或轉售候選人。", "我们绝不会在客户之间汇集或转售候选人。"], "f3": ["示範只用模擬資料", "演示只用模拟数据"], "f3.p": ["潛在客戶只會看到虛構的香港紀錄，絕不會看到真實公司的資料。", "潜在客户只会看到虚构的香港记录，绝不会看到真实机构的数据。"], "f4": ["顧及私隱條例", "兼顾隐私条例"], "f4.p": ["設計時已顧及香港《個人資料（私隱）條例》。由現有系統遷移的範圍，會與你一同規劃。", "设计时已考虑香港《个人资料（私隐）条例》。从现有系统迁移的范围，将与你共同规划。"], "close.h2": ["十五分鐘。你的流程。不用簡報。", "十五分钟。你的流程。不放幻灯片。"], "close.p": ["我們會用香港示範資料，帶你走一遍由新職位到成功入職的完整流程——並說明搬遷你的資料庫需要甚麼。", "我们会用香港示例数据，带你走完从新职位到成功录用的完整流程——并说明迁移你的数据库需要什么。"], "foot": ["人力資源營運系統 · 香港 · © <span id=\"yr\">2026</span>", "人力资源运营系统 · 香港 · © <span id=\"yr\">2026</span>"]}, META = {"en": {"title": "Teleport — The operating system for recruitment agencies", "desc": "Teleport keeps companies, candidates, jobs, pipeline and placements in one record for Hong Kong recruitment agencies. AI drafts; your consultant decides."}, "zh-HK": {"title": "Teleport — 專為招聘公司而設的營運系統", "desc": "Teleport 把客戶公司、候選人、職位、招聘流程與成功入職集中在同一份紀錄。AI 起草，顧問決定。"}, "zh-CN": {"title": "Teleport — 专为招聘机构打造的运营系统", "desc": "Teleport 把客户公司、候选人、职位、招聘流程与成功录用集中在同一条记录里。AI 起草，顾问决定。"}}, LANGS = ['en','zh-HK','zh-CN'];
+  var nodes = document.querySelectorAll('[data-i18n]');
+  nodes.forEach(function(n){ n.__en = n.innerHTML; });
+  function pick(){
+    var q = new URLSearchParams(location.search).get('lang');
+    if (LANGS.indexOf(q) > -1) return q;
+    try { var s = localStorage.getItem('teleport-lang'); if (LANGS.indexOf(s) > -1) return s; } catch(e){}
+    var b = (navigator.language || 'en').toLowerCase();
+    if (b.indexOf('zh') === 0) return /cn|sg|hans/.test(b) ? 'zh-CN' : 'zh-HK';
+    return 'en';
+  }
+  function apply(l, save){
+    nodes.forEach(function(n){
+      var k = n.getAttribute('data-i18n');
+      n.innerHTML = (l === 'en' || !DICT[k]) ? n.__en : DICT[k][l === 'zh-HK' ? 0 : 1];
+    });
+    var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+    document.documentElement.lang = l;
+    document.title = META[l].title;
+    var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', META[l].desc);
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    if (save) {
+      try { localStorage.setItem('teleport-lang', l); } catch(e){}
+      var u = new URL(location.href); if (l === 'en') u.searchParams.delete('lang'); else u.searchParams.set('lang', l);
+      history.replaceState(null, '', u);
+    }
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.lang, true); });
+  });
+  apply(pick(), false);
 })();
 </script>
 </body>
