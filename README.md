@@ -36,7 +36,9 @@ Open `index.html` in a browser, or run `npx serve .`
 
 ## Deploy
 
-Import this repo into Vercel as a static site (Framework preset: Other, no build command, output directory `.`). Every PR gets a preview URL; `main` is production.
+GitHub Pages serves `main` from the repo root at **https://teleport.touchhk.com** (custom domain via the `CNAME` file; HTTPS enforced). Pushing to `main` publishes in ~1–3 minutes. Do not move `index.html` out of the root or delete `CNAME`.
+
+A Cloudflare Pages + pnpm setup exists on branch `chore/cloudflare-pages` (PR #2, closed) if we ever need it.
 
 ## Before going live
 
@@ -46,7 +48,6 @@ Import this repo into Vercel as a static site (Framework preset: Other, no build
 - [ ] Confirm rights to use the cover / character photos publicly (check licence)
 - [ ] Native-speaker review of the 繁 / 简 copy
 - [ ] Paste the GA4 measurement ID into `assets/analytics.js`
-- [ ] Connect a domain
 
 ## Copy rule
 
