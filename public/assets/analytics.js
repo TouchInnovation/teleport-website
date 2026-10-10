@@ -1,6 +1,7 @@
 /* Teleport website — Google Analytics 4
  *
- * Set GA_MEASUREMENT_ID to the property's web stream ID (Admin → Data streams → Web → "G-…").
+ * Set GA_MEASUREMENT_ID via the Cloudflare Pages env var of the same name (the build injects it),
+ * or paste the web stream ID (Admin → Data streams → Web → "G-…") here.
  * While it is the placeholder, nothing loads and nothing is sent.
  *
  * Events (all carry page_variant = "v2" | "v3" and site_language = "en" | "zh-HK" | "zh-CN"):
@@ -15,7 +16,7 @@
   if (!/^G-[A-Z0-9]{6,}$/.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
   if (location.protocol === 'file:') return; // don't count local previews
 
-  var variant = /v3\.html$/.test(location.pathname) ? 'v3' : 'v2';
+  var variant = /\/v3(\.html)?$/.test(location.pathname) ? 'v3' : 'v2';
   function lang() { return document.documentElement.lang || 'en'; }
 
   var s = document.createElement('script');

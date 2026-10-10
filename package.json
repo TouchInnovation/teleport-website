@@ -1,0 +1,29 @@
+{
+  "name": "teleport-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Teleport marketing site — static HTML, deployed on Cloudflare Pages",
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "pnpm build && wrangler pages dev dist --port 8788",
+    "preview": "pnpm dev",
+    "deploy": "pnpm build && wrangler pages deploy dist --project-name teleport-website --branch main",
+    "deploy:preview": "pnpm build && wrangler pages deploy dist --project-name teleport-website",
+    "i18n": "python3 tools/add_i18n.py public/index.html public/v3.html"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd",
+      "sharp"
+    ]
+  }
+}
