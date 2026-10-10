@@ -19,7 +19,7 @@ Both pages have an **EN / 繁 / 简** switch in the nav (English, Traditional Ch
 
 ## Analytics (GA4)
 
-`assets/analytics.js` is loaded by both pages. Paste the web-stream measurement ID into `GA_MEASUREMENT_ID` at the top of that file. Until then it does nothing, and it never runs on `file://` previews.
+`assets/analytics.js` is loaded by both pages. Measurement ID: `G-XVC82ELQKB` (set at the top of that file). It never runs on `file://` previews.
 
 Events (each carries `page_variant` v2/v3 and `site_language`):
 
@@ -47,7 +47,7 @@ A Cloudflare Pages + pnpm setup exists on branch `chore/cloudflare-pages` (PR #2
 - [ ] Confirm the brand orange — `--orange: #FF8200` is sampled from the cover, not an approved hex
 - [ ] Confirm rights to use the cover / character photos publicly (check licence)
 - [ ] Native-speaker review of the 繁 / 简 copy
-- [ ] Paste the GA4 measurement ID into `assets/analytics.js`
+- [x] GA4 measurement ID set (`G-XVC82ELQKB`)
 
 ## Copy rule
 
