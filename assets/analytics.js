@@ -15,7 +15,8 @@
   if (!/^G-[A-Z0-9]{6,}$/.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
   if (location.protocol === 'file:') return; // don't count local previews
 
-  var variant = /\/v3(\.html)?$/.test(location.pathname) ? 'v3' : 'v2';
+  var variant = document.documentElement.getAttribute('data-variant') ||
+    (/\/v3(\.html)?$/.test(location.pathname) ? 'v3' : 'v2');
   function lang() { return document.documentElement.lang || 'en'; }
 
   var s = document.createElement('script');

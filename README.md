@@ -52,3 +52,10 @@ A Cloudflare Pages + pnpm setup exists on branch `chore/cloudflare-pages` (PR #2
 ## Copy rule
 
 Only claim what is live today. Anything still being built is labelled *In development* / *Building*. No borrowed client logos, invented metrics, or testimonials.
+
+## Published page
+
+- `index.html` = **v3** (published homepage).
+- `v3.html` = same page, kept so old links work.
+- `v2.html` = previous homepage, kept for reference.
+- Each page sets `<html data-variant>`; `assets/analytics.js` reads it for `page_variant`.
