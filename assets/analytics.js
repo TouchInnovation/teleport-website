@@ -3,7 +3,8 @@
  * Set GA_MEASUREMENT_ID to the property's web stream ID (Admin → Data streams → Web → "G-…").
  * While it is the placeholder, nothing loads and nothing is sent.
  *
- * Events (all carry page_variant = "v2" | "v3" and site_language = "en" | "zh-HK" | "zh-CN"):
+ * Events (all carry page_variant — "v3", from <html data-variant>, kept for continuity with the
+ * v2/v3 comparison reports — and site_language = "en" | "zh-HK" | "zh-CN"):
  *   generate_lead     — any "Book…" / mailto click (GA4 recommended event; mark as a Key event)
  *   cta_click         — every button/pill click, with cta_text + cta_location (section id)
  *   language_switch   — EN / 繁 / 简 clicks, with from_language + to_language
@@ -17,8 +18,7 @@
   if (!/^G-[A-Z0-9]{6,}$/.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
   if (location.protocol === 'file:') return; // don't count local previews
 
-  var variant = document.documentElement.getAttribute('data-variant') ||
-    (/\/v3(\.html)?$/.test(location.pathname) ? 'v3' : 'v2');
+  var variant = document.documentElement.getAttribute('data-variant') || 'v3';
   function lang() { return document.documentElement.lang || 'en'; }
 
   var s = document.createElement('script');
