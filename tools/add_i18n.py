@@ -82,6 +82,11 @@ T = [
  ("caption", "Illustrative record. The AI write-up panel is Controlled AI, in development with our launch agency.",
   "示意紀錄。AI 推薦信面板屬「可控 AI」功能，正與首家合作招聘公司共同開發。",
   "示意记录。AI 推荐信面板属于“可控 AI”功能，正与首家合作招聘机构共同开发。"),
+ # product demo video (index.html / v3.html; replaces the illustrative record above)
+ ("demo.play", "Watch the 1-minute demo", "觀看 1 分鐘示範", "观看 1 分钟演示"),
+ ("demo.caption", "Recorded on our demo with made-up Hong Kong records. The Blurb step (client write-ups) is in development with our launch agency.",
+  "於示範環境錄製，全部使用虛構的香港紀錄。片中的推薦信（Blurb）步驟仍在與首家合作招聘公司共同開發。",
+  "在演示环境录制，全部使用虚构的香港记录。片中的推荐信（Blurb）步骤仍在与首家合作招聘机构共同开发。"),
  # controlled AI
  ("ai.h2", "AI drafts. <span>Your consultant decides.</span>", "AI 起草。<span>顧問決定。</span>", "AI 起草。<span>顾问决定。</span>"),
  ("ai.r1", "Nothing leaves without a yes", "未經批准，一律不發出", "未经批准，一律不发出"),

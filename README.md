@@ -7,6 +7,7 @@ One-page marketing site for Teleport (Hire More), aimed at Hong Kong recruitment
 - `index.html` — v2 design (styles and script inline)
 - `v3.html` — v3 design with HD character photos, for side-by-side comparison
 - `assets/teleport-hero.jpg` — low-res cover crop used by `index.html`
+- `assets/video/teleport-demo.mp4` + `teleport-demo-poster.jpg` — 63s product demo (1080p H.264, captions only, no audio) in the Product panel of `index.html` / `v3.html`. Click-to-play; nothing downloads until played. To swap in a new cut, replace the two files under the same names.
 - `assets/people/*-1200.jpg` / `*-2400.jpg` — HD character photos from the current deck (Figma V4.2, upscaled), used by `v3.html`: `hero-tablet` (73:2), `consultant-orange` (131:17), `meeting` (138:26), `cafe-laptop` (52:14), `handshake` (53:6)
 
 ## Languages
@@ -27,8 +28,9 @@ Events (each carries `page_variant` v2/v3 and `site_language`):
 - `cta_click` — every button, with `cta_text` and `cta_location`
 - `language_switch` — `from_language` → `to_language`
 - `section_view` — each main section seen (50%)
+- `video_start` / `video_complete` — demo video started / watched to the end, with `video_title` (GA4 recommended video events)
 
-In GA4 → Admin → Custom definitions, register event-scoped dimensions `page_variant`, `site_language`, `cta_location`, `section_id`, `to_language` to compare v2 vs v3 in reports.
+In GA4 → Admin → Custom definitions, register event-scoped dimensions `page_variant`, `site_language`, `cta_location`, `section_id`, `to_language`, `video_title` to compare v2 vs v3 in reports.
 
 ## Preview locally
 
