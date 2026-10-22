@@ -4,31 +4,31 @@ One-page marketing site for Teleport (Hire More), aimed at Hong Kong recruitment
 
 ## Structure
 
-- `index.html` — v2 design (styles and script inline)
-- `v3.html` — v3 design with HD character photos, for side-by-side comparison
-- `assets/teleport-hero.jpg` — low-res cover crop used by `index.html`
-- `assets/people/*-1200.jpg` / `*-2400.jpg` — HD character photos from the current deck (Figma V4.2, upscaled), used by `v3.html`: `hero-tablet` (73:2), `consultant-orange` (131:17), `meeting` (138:26), `cafe-laptop` (52:14), `handshake` (53:6)
+- `index.html` — the whole site, one page (styles and script inline)
+- `assets/video/teleport-demo.mp4` + `teleport-demo-poster.jpg` — 63s product demo (1080p H.264, captions only, no audio) in the Product panel. Click-to-play; nothing downloads until played. To swap in a new cut, replace the two files under the same names.
+- `assets/people/*-1200.jpg` / `*-2400.jpg` — HD character photos from the current deck (Figma V4.2, upscaled): `hero-tablet` (73:2), `consultant-orange` (131:17), `meeting` (138:26), `cafe-laptop` (52:14), `handshake` (53:6)
 
 ## Languages
 
-Both pages have an **EN / 繁 / 简** switch in the nav (English, Traditional Chinese for HK, Simplified Chinese).
+The page has an **EN / 繁 / 简** switch in the nav (English, Traditional Chinese for HK, Simplified Chinese).
 
 - Link straight to a language with `?lang=zh-HK`, `?lang=zh-CN` or `?lang=en`
 - The choice is remembered in the browser; first visit follows the browser language (zh-HK/TW → 繁, zh-CN/SG → 简)
-- Translations live in `tools/add_i18n.py` (one table: key, English, 繁, 简). To change copy, edit the table, restore the English HTML, and re-run `python3 tools/add_i18n.py index.html v3.html`. The script tags elements with `data-i18n` and is a no-op on already-tagged pages.
+- Translations live in `tools/add_i18n.py` (one table: key, English, 繁, 简). To change copy, edit the table, restore the English HTML, and re-run `python3 tools/add_i18n.py index.html`. The script tags elements with `data-i18n` and is a no-op on already-tagged pages.
 
 ## Analytics (GA4)
 
-`assets/analytics.js` is loaded by both pages. Measurement ID: `G-XVC82ELQKB` (set at the top of that file). It never runs on `file://` previews.
+`assets/analytics.js` is loaded by `index.html`. Measurement ID: `G-XVC82ELQKB` (set at the top of that file). It never runs on `file://` previews.
 
-Events (each carries `page_variant` v2/v3 and `site_language`):
+Events (each carries `page_variant` and `site_language`):
 
 - `generate_lead` — mailto / Book clicks. Mark as a **Key event** in GA4.
 - `cta_click` — every button, with `cta_text` and `cta_location`
 - `language_switch` — `from_language` → `to_language`
 - `section_view` — each main section seen (50%)
+- `video_start` / `video_complete` — demo video started / watched to the end, with `video_title` (GA4 recommended video events)
 
-In GA4 → Admin → Custom definitions, register event-scoped dimensions `page_variant`, `site_language`, `cta_location`, `section_id`, `to_language` to compare v2 vs v3 in reports.
+In GA4 → Admin → Custom definitions, register event-scoped dimensions `page_variant`, `site_language`, `cta_location`, `section_id`, `to_language`, `video_title` to use them in reports. `page_variant` is now always `v3` (from `<html data-variant>`); it stays so reports from the v2/v3 comparison period line up.
 
 ## Preview locally
 
@@ -53,9 +53,6 @@ A Cloudflare Pages + pnpm setup exists on branch `chore/cloudflare-pages` (PR #2
 
 Only claim what is live today. Anything still being built is labelled *In development* / *Building*. No borrowed client logos, invented metrics, or testimonials.
 
-## Published page
+## History
 
-- `index.html` = **v3** (published homepage).
-- `v3.html` = same page, kept so old links work.
-- `v2.html` = previous homepage, kept for reference.
-- Each page sets `<html data-variant>`; `assets/analytics.js` reads it for `page_variant`.
+v3 is the published design, now `index.html` only. `v2.html`, `v3.html` and the v2 cover crop were removed in PR #4; they're in git history if needed.

@@ -3,11 +3,14 @@
  * Set GA_MEASUREMENT_ID to the property's web stream ID (Admin → Data streams → Web → "G-…").
  * While it is the placeholder, nothing loads and nothing is sent.
  *
- * Events (all carry page_variant = "v2" | "v3" and site_language = "en" | "zh-HK" | "zh-CN"):
+ * Events (all carry page_variant — "v3", from <html data-variant>, kept for continuity with the
+ * v2/v3 comparison reports — and site_language = "en" | "zh-HK" | "zh-CN"):
  *   generate_lead     — any "Book…" / mailto click (GA4 recommended event; mark as a Key event)
  *   cta_click         — every button/pill click, with cta_text + cta_location (section id)
  *   language_switch   — EN / 繁 / 简 clicks, with from_language + to_language
  *   section_view      — first time each main section is 50% on screen
+ *   video_start       — demo video starts playing (GA4 recommended event), with video_title
+ *   video_complete    — demo video watched to the end, with video_title + video_percent 100
  * Scrolls, outbound clicks and page views come from GA4 Enhanced Measurement.
  */
 (function () {
@@ -15,8 +18,7 @@
   if (!/^G-[A-Z0-9]{6,}$/.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
   if (location.protocol === 'file:') return; // don't count local previews
 
-  var variant = document.documentElement.getAttribute('data-variant') ||
-    (/\/v3(\.html)?$/.test(location.pathname) ? 'v3' : 'v2');
+  var variant = document.documentElement.getAttribute('data-variant') || 'v3';
   function lang() { return document.documentElement.lang || 'en'; }
 
   var s = document.createElement('script');
@@ -80,4 +82,29 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('main section').forEach(function (s) { io.observe(s); });
   }
+
+  // Demo video (self-hosted, so GA4 Enhanced Measurement doesn't see it)
+  document.querySelectorAll('video[data-track]').forEach(function (v) {
+    var started = false, done = false;
+    function params(extra) {
+      var p = {
+        video_title: v.getAttribute('data-track'),
+        video_provider: 'self-hosted',
+        video_duration: Math.round(v.duration || 0),
+        video_current_time: Math.round(v.currentTime || 0)
+      };
+      for (var k in extra) p[k] = extra[k];
+      return p;
+    }
+    v.addEventListener('playing', function () { // 'playing', not 'play': only counts playback that actually started
+      if (started) return;
+      started = true;
+      send('video_start', params({}));
+    });
+    v.addEventListener('ended', function () {
+      if (done) return;
+      done = true;
+      send('video_complete', params({ video_percent: 100 }));
+    });
+  });
 })();
